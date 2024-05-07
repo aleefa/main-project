@@ -1,0 +1,56 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/replycode">
+{#    <table class="">#}
+        <table width="295" border="1" class="table table-striped">
+    <tr align="center">
+       <td  colspan="9"><h1>SEND REPLY</h1></td>
+   </tr>
+ <tr>
+     <th width="275">Staff</th>
+
+       <th> <label>{{ i.staff.fname }}&nbsp;&nbsp;{{ i.staff.lname }}
+      </label></th>
+    </tr>
+
+            <th width="275">Complaint</th>
+       <th> <label>
+        {{ i.complaint }}
+      </label></th>
+    </tr>
+            <tr>
+                <th width="275">Date</th>
+       <th> <label>
+        {{ i.date }}
+      </label></th>
+    </tr>
+
+
+    <tr>
+        <th width="275">Reply</th>
+      <th>  <label>
+        <textarea name="textarea"></textarea>
+      </label></th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div align="center" >
+          <input type="submit" name="Submit" value="send" />
+          </div>
+      </td>
+    </tr>
+  </table>
+  <label></label>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

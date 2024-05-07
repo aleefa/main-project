@@ -1,0 +1,221 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/addhr1" enctype="multipart/form-data">
+{#    <h1 align="center"><b>ADD HR</b></h1>#}
+  <table width="600" border="1" class="table table-striped" >
+   <tr align="center">
+       <td colspan="2"><h1>ADD HR</h1></td>
+   </tr>
+    <tr>
+      <th >First name</th>
+      <td >
+        <input type="text" name="textfield" id="fname"required pattern="[A-Z a-z.]{3,25}" /><p id="falert"></p>
+      </td>
+    </tr>
+    <tr>
+      <th>Last name</th>
+      <td>
+        <input type="text" name="textfield2" id="lname"  pattern="[A-Z a-z.]{0,25}"  /><p id="lalert"></p>
+      </td>
+    </tr>
+    <tr>
+      <th>Place</th>
+      <td><input type="text" name="textfield3"  id="place" required pattern="[A-Z a-z.]{3,25}" /><p id="plalert"></p></td>
+    </tr>
+    <tr>
+      <th>Post</th>
+      <td><input type="text" name="textfield4"  id="post" required pattern="[A-Z a-z.]{3,25}"/><p id="poalert"></td>
+    </tr>
+    <tr>
+      <th>Pin</th>
+      <td><input type="text" name="textfield5"  id="pin" required pattern="[0-9]{6}" /><p id="pialert"></td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td> <label>
+        <input name="radiobutton" type="radio" value="male" required/>male
+		 <input name="radiobutton" type="radio" value="female" />female
+      </label></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><input type="email" name="textfield7" required pattern="[a-z_0-9]{2,30}[@][a-z]{2,10}[.][a-z.]{2,20}" /></td>
+    </tr>
+    <tr>
+      <th>Dob</th>
+      <td><input type="date" name="textfield82" required id="address" max="2005-12-31" required /></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><input type="text" name="textfield8" id="phone" required pattern="[6789][0-9]{9}" /><p id="phalert"></td>
+    </tr>
+    <tr>
+      <th>Photo</th>
+      <td><input type="file" name="file" required  accept="image/*"/></td>
+    </tr>
+    <tr>
+      <th>Username</th>
+      <td><input type="text" name="textfield10" required pattern="[A-Z a-z.]{3,25}"  /></td>
+    </tr>
+    <tr>
+      <th>Password</th>
+      <td><input type="text" name="textfield11" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required  /></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div align="center">
+
+          <input type="submit" name="Submit" value="add" class="btn btn-primary" />
+
+          </div>
+      </td>
+    </tr>
+  </table>
+  <label></label>
+</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#fname').on('keyup', function(){
+        var inputValue = $(this).val();
+        var regex = /^[a-zA-Z]*$/;
+        if(!regex.test(inputValue)) {
+            $(this).val('');
+             $('#falert').css('color', 'red');
+            $("#falert").html("Only Characters allowed")
+              $('#fname').css('background-color', 'yellow');
+{#            alert('Please enter only alphabets.');#}
+        }
+        else{
+              $('#fname').removeAttr('style');
+              $('#falert').removeAttr('style');
+        }
+    });
+{#    ------------------------#}
+
+    $('#lname').on('keyup', function(){
+        var inputValue = $(this).val();
+        var regex = /^[a-zA-Z]*$/;
+        if(!regex.test(inputValue)) {
+            $(this).val('');
+             $('#lalert').css('color', 'red');
+            $("#lalert").html("Only Characters allowed")
+              $('#lname').css('background-color', 'yellow');
+{#            alert('Please enter only alphabets.');#}
+        }
+        else{
+              $('#lname').removeAttr('style');
+              $('#lalert').removeAttr('style');
+        }
+    });
+{#    ------------------------#}
+     $('#place').on('keyup', function(){
+        var inputValue = $(this).val();
+        var regex = /^[a-zA-Z]*$/;
+        if(!regex.test(inputValue)) {
+            $(this).val('');
+             $('#plalert').css('color', 'red');
+            $("#plalert").html("Only Characters allowed")
+              $('#place').css('background-color', 'yellow');
+{#            alert('Please enter only alphabets.');#}
+        }
+        else{
+              $('#place').removeAttr('style');
+              $('#plalert').removeAttr('style');
+        }
+    });
+{#    ------------------------#}
+     $('#post').on('keyup', function(){
+        var inputValue = $(this).val();
+        var regex = /^[a-zA-Z]*$/;
+        if(!regex.test(inputValue)) {
+            $(this).val('');
+             $('#poalert').css('color', 'red');
+            $("#poalert").html("Only Characters allowed")
+              $('#post').css('background-color', 'yellow');
+{#            alert('Please enter only alphabets.');#}
+        }
+        else{
+              $('#post').removeAttr('style');
+              $('#poalert').removeAttr('style');
+        }
+    });
+{#    ------------------------#}
+      $('#phone').on('keyup', function(){
+        var inputValue = $(this).val();
+         var regex = /^[0-9- ]*$/;
+        if(!regex.test(inputValue)) {
+            $(this).val('');
+             $('#phalert').css('color', 'red');
+            $("#phalert").html("Only Numbers allowed")
+              $('#phone').css('background-color', 'yellow');
+{#            alert('Please enter only alphabets.');#}
+        }
+        else{
+              if (inputValue.length<10){
+                $('#phalert').css('color', 'red');
+            $("#phalert").html("Must be 10")
+              $('#phone').css('background-color', 'yellow');
+
+            }
+            else {
+                $('#phone').removeAttr('style');
+                $('#phalert').removeAttr('style');
+            }
+        }
+    });
+{#    ------------------------#}
+ $('#pin').on('keyup', function(){
+        var inputValue = $(this).val();
+         var regex = /^[0-9- ]*$/;
+        if(!regex.test(inputValue)) {
+            $(this).val('');
+             $('#pialert').css('color', 'red');
+            $("#pialert").html("Only Numbers allowed")
+              $('#pin').css('background-color', 'yellow');
+{#            alert('Please enter only alphabets.');#}
+        }
+        else{
+
+            if (inputValue.length<6){
+                $('#pialert').css('color', 'red');
+            $("#pialert").html("Must be 6")
+              $('#pin').css('background-color', 'yellow');
+
+            }
+            else {
+                $('#pin').removeAttr('style');
+                $('#pialert').removeAttr('style');
+            }
+        }
+    });
+{#    ------------------------#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
+{% endblock %}
+{#</html>#}

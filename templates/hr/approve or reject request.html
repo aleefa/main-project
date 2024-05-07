@@ -1,0 +1,58 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+
+{% extends 'hr/hrindex1.html' %}
+{% block body %}
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/search_leave">
+   <table width="295" border="1" class="table table-striped">
+  <tr align="center">
+       <td  colspan="13"><h1>VIEW LEAVE </h1></td>
+   </tr>
+    <tr>
+      <th colspan="6">Staff
+        <label>
+        <input type="text" name="textfield" />
+      </label>
+        <label>
+        <input type="submit" name="Submit" value="search" class="btn btn-primary"/>
+      </label></th>
+    </tr>
+
+    <tr>
+      <th width="25">staff</td>
+      <th width="76">Date </th>
+      <th width="65">From date </th>
+      <th width="65">No.of days </th>
+      <th width="65">Reason </th>
+      <th width="72">&nbsp;</th>
+    </tr>
+       {% for i in  val %}
+
+    <tr>
+      <td>{{ i.staff.fname }}&nbsp;{{ i.staff.lname }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>&nbsp;{{ i.from_date }}</td>
+      <td>&nbsp;{{ i.no_of_days }}</td>
+      <td>&nbsp;{{ i.reason }}</td>
+        {% if i.status == 'pending' %}
+      <td><p><a href="Accept_leave/{{ i.id }}">accept</a></p>
+      <p><a href="reject_leave/{{ i.id }}">reject</a></p></td>
+    {% elif i.status == 'rejected' %}
+    <td>Rejected</td>
+    {% else %}
+    <td>Accepted</td>
+    {% endif %}
+    </tr>
+       {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+{#</html>#}

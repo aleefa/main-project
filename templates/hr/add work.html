@@ -1,0 +1,80 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+
+{% extends 'hr/hrindex1.html' %}
+{% block body %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="addwrk1" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table class="table table-striped">
+  <tr align="center">
+       <td  colspan="11"><h1>ADD WORK</h1></td>
+   </tr>
+    <tr>
+      <th>work</th>
+      <td><label>
+        <input type="text" name="textfield" required />
+      </label></td>
+    </tr>
+    <tr>
+      <th>description</th>
+      <td><label>
+      <input type="text" name="textfield2" required/>
+      </label></td>
+    </tr>
+{#    <tr>#}
+{#      <td>status</td>#}
+{#      <td><label>#}
+{#      <input type="text" name="textfield3" />#}
+{#      </label></td>#}
+{#    </tr>#}
+    <tr>
+      <th>Date</th>
+      <td><label>
+      <input type="date" name="textfield4" required/>
+      </label></td>
+    </tr>
+
+    <tr>
+      <th>Plan</th>
+      <td><label>
+        <input type="file" name="file" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <th>Client</th>
+      <td><label>
+      <input type="text" name="textfield7" required/>
+      </label></td>
+    </tr>
+
+      <tr>
+      <th>Staff</th>
+      <td><select name="select"  class="btn btn-light dropdown-toggle" required>
+          {% for i in val %}
+          <option value="{{ i.id }}">{{ i.fname }} {{ i.lname }}</option>
+          {% endfor %}
+      </select></td>
+    </tr>
+
+{#    <tr>#}
+{#      <td>&nbsp;</td>#}
+{#      <td>&nbsp;</td>#}
+{#    </tr>#}
+
+       <tr>
+      <td colspan="2">
+        <div align="center">
+          <input type="submit" name="Submit" value="add" class="btn btn-primary w-100" />
+          </div>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+{#</html>#}

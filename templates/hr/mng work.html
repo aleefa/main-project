@@ -1,0 +1,103 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+
+{% extends 'hr/hrindex1.html' %}
+{% block body %}
+<head>
+<style>
+    #my_scroll_div{
+    overflow-y: auto;
+    max-height: 1000px;
+}
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+    <style>
+    #ed {
+    color: #0d6efd;
+    text-decoration: none;
+}
+    #de {
+    color: #fd0b0e;
+    text-decoration: none;
+
+}
+    h{
+        font-size: 180%;
+    }
+    </style>
+
+<body>
+<form method="post" action="/search_wrk#about">
+<div id="" style="overflow:scroll; height:500px;">
+{#        <h1 align="center"><b>MANAGE WORK</b></h1>#}
+  <table width="295" border="1" class="table table-striped">
+  <tr align="center">
+       <th  colspan="11"><h>MANAGE WORK</h></th>
+   </tr>
+{#  <table width="328" border="1">#}
+    <tr>
+      <th colspan="11">Date
+
+        <label>
+        <input type="date" name="textfield" />
+        <input type="text" name="textfield2" placeholder="work/client"/>
+      </label>
+      <label>
+      <input type="submit" name="Submit" value="search" class="btn btn-primary"/>
+          <a href="/adwork#about" class="btn btn-primary btn-lg"><i class="bi bi-file-earmark-plus-fill" ></i></a>
+      </label></th>
+    </tr>
+
+    <tr>
+      <th ><b></b>Slno</th>
+
+      <th >Work</th>
+      <th >Description</th>
+      <th >Date</th>
+      <th >Location</th>
+      <th >Plan</th>
+      <th>Client</th>
+        <th>Staff</th>
+      <th >Edit</th>
+{#      <th >Delete</th>#}
+        <td style="width: 100px;"></td>
+    </tr>
+       {% for i in  val %}
+    <tr>
+      <td>&nbsp;&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.work }}</td>
+      <td>{{ i.description }}</td>
+{#      <td>&nbsp;{{ i.status }}</td>#}
+      <td>&nbsp;{{ i.date }}</td>
+        <td>&nbsp;<a href="https://www.google.com/maps?q={{ i.latitude }},{{ i.longitude }}">track</a></td>
+         <td>&nbsp;<a href="{{ i.plan.url }}" >view</a></td>
+         <td>{{ i.client }}</td>
+         <td>{{ i.sname }}</td>
+        <td>{% if i.status == "completed " %} No Updation{% else %}<p><a href="/editwrk/{{ i.id }}" id="ed"><i class="bi bi-pencil-square"></i></a></p>{% endif %}</td>
+{#      <td><p><a href="/dltwrk/{{ i.id }}" id="de"><i class="bi bi-trash3-fill"></i></a></p></td>#}
+{#      <p><a href="#">Assign</a></p></td>#}
+    <td>{% if i.status != 'pending' %} {{ i.status }} {% endif %}</td>
+    </tr>
+      {% endfor %}
+    <tr>
+      <td colspan="12">
+{#        <div align="center">#}
+          <tr>
+      <td colspan="12" align="center"></td>
+    </tr>
+
+
+
+  </table>
+</div>
+
+</form>
+</body>
+
+
+
+{% endblock %}
+{#</html>#}

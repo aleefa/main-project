@@ -1,0 +1,40 @@
+{% extends 'hr/hrindex1.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/sal_calc#get-started">
+  <table border="1"class="table table-striped">
+   <tr align="center">
+       <th  colspan="2"><h1>VIEW SALARY DETAILS</h1></th>
+
+
+    <tr>
+      <th>Name</th><td>&nbsp;{{ i.fname }} {{ i.lname }}</td>
+  </tr> <tr>
+      <th>Basic Pay</th><td>43200</td>
+  </tr>
+      <tr>
+          <th>Attendance</th>
+      <td>&nbsp;{{ i.per }}0</td>
+      </tr> <tr>
+          <th>Salary Cut</th>
+      <td>&nbsp;{{ i.red }}0</td>
+      </tr>
+<tr>
+    <th>Salary</th>
+        <td >{{ i.ms }}.0</td>
+</tr>
+      <tr>
+    <th>TA</th><td>{{ ta }}</td>
+
+    </tr> <tr>
+    <th>DA</th><td>{{ da }}</td>
+
+    </tr>
+
+ <tr>
+    <th>Total Salary</th><td>{{ i.tms }}</td>
+
+    </tr>
+
+  </table>
+</form>
+{% endblock %}

@@ -1,0 +1,96 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/attendance1">
+{# <h1 align="center"><b>VIEW STAFF</b></h1>#}
+  <table width="295" border="1" class="table table-striped ">
+  <tr align="center">
+       <td  colspan="8"><h1>VIEW ATTENDANCE</h1></td>
+
+    <tr>
+      <th colspan="6">Name
+        <label>
+        <select name="select">
+            {% for i in val %}
+            <option value="{{ i.id }}" {% if i.id == sid %}selected{% endif %}>
+                {{ i.fname }} {{ i.lname }}
+            </option>
+            {% endfor %}
+        </select>
+        <select name="month">
+            <option value="1" {% if mnth == '1' %}selected{% endif %}>JANUARY</option>
+            <option value="2" {% if mnth == '2' %}selected{% endif %}>FEBRUARY</option>
+            <option value="3" {% if mnth == '3' %}selected{% endif %}>MARCH</option>
+            <option value="4" {% if mnth == '4' %}selected{% endif %}>APRIL</option>
+            <option value="5" {% if mnth == '5' %}selected{% endif %}>MAY</option>
+            <option value="6" {% if mnth == '6' %}selected{% endif %}>JUNE</option>
+            <option value="7" {% if mnth == '7' %}selected{% endif %}>JULY</option>
+            <option value="8" {% if mnth == '8' %}selected{% endif %}>AUGUST</option>
+            <option value="9" {% if mnth == '9' %}selected{% endif %}>SEPTEMBER</option>
+            <option value="10" {% if mnth == '10' %}selected{% endif %}>OCTOBER</option>
+            <option value="11" {% if mnth == '11' %}selected{% endif %}>NOVEMBER</option>
+            <option value="12" {% if mnth == '12' %}selected{% endif %}>DECEMBER</option>
+        </select>
+
+        <select name="year">
+            <option value="2023" {% if yr == "2023" %} selected {% endif %}>2023</option>
+            <option value="2024" {% if yr == "2024" %} selected {% endif %}>2024</option>
+            <option value="2025" {% if yr == "2025" %} selected {% endif %}>2025</option>
+            <option value="2026" {% if yr == "2026" %} selected {% endif %}>2026</option>
+            <option value="2027" {% if yr == "2027" %} selected {% endif %}>2027</option>
+            <option value="2028" {% if yr == "2028" %} selected {% endif %}>2028</option>
+            <option value="2029" {% if yr == "2029" %} selected {% endif %}>2029</option>
+
+        </select>
+        <input type="submit" name="Submit" value="search" class="btn btn-primary" />
+      </label></th>
+    </tr>
+  <tr>
+      <tr>
+      <td width="23">slno</td>
+      <td width="36">date</td>
+      <td width="116">status</td>
+    </tr>
+
+    {% for i in val1 %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Date }} </td>
+      <td>&nbsp;{{ i.Attendance }}</td>
+
+    </tr>
+    {% endfor %}
+
+{#    <tr>#}
+{#      <th width="17">Slno</th>#}
+{#      <th width="28">Name</th>#}
+{#      <th width="28">Address</th>#}
+{#      <th width="28">Gender</th>#}
+{#      <th width="28">Phone</th>#}
+{#      <th width="109">Email</th>#}
+{#    </tr>#}
+{#        {% for i in  val %}#}
+{#    <tr>#}
+{#      <td>{{ forloop.counter }}&nbsp;</td>#}
+{#        <td>{{ i.fname }} {{ i.lname }}&nbsp;</td>#}
+{#      <td>{{ i.place }}{{ i.post}}{{ i.pin }}&nbsp;</td>#}
+{#      <td>{{ i.gender}}&nbsp;</td>#}
+{##}
+{#      <td>{{ i.phno }} &nbsp;</td>#}
+{#         <td>&nbsp;{{ i.email}}</td>#}
+{##}
+{#    </tr>#}
+{#       {% endfor %}#}
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

@@ -1,0 +1,60 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+<body>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show Image on Cursor Hover over Hyperlink</title>
+<style>
+  #image-container {
+    position: absolute;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<a href="#" onmouseover="showImage(event)" onmouseout="hideImage()">Hover over me</a>
+
+<div id="image-container">
+  <img src="your-image.jpg" alt="Hovered Image">
+</div>
+
+<script>
+  const imageContainer = document.getElementById('image-container');
+
+  function showImage(event) {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    imageContainer.style.display = 'block';
+    imageContainer.style.left = mouseX + 'px';
+    imageContainer.style.top = mouseY + 'px';
+  }
+
+  function hideImage() {
+    imageContainer.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+{##}
+{#</body>#}
+{#</html>#}

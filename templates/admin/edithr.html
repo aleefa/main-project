@@ -1,0 +1,90 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/edithr1" enctype="multipart/form-data">
+{#    <h1 align="center"><b>EDIT HR</b></h1>#}
+  <table width="295" border="1" class="table table-striped">
+  <tr align="center">
+       <td  colspan="11"><h1>EDIT HR</h1></td>
+   </tr>
+{#  <table width="299" border="1">#}
+    <tr>
+      <th width="139">Fname</th>
+      <td width="144"><label>
+        <input type="text" name="textfield" value="{{ val.fname }}" required pattern="[A-Z a-z.]{3,25}"  />
+      </label></td>
+    </tr>
+    <tr>
+      <th>Lname</th>
+      <td><label>
+        <input type="text" name="textfield2"  value="{{ val.lname }}" required pattern="[A-Z a-z.]{1,25}"  />
+      </label></td>
+    </tr>
+    <tr>
+      <th>Place</th>
+      <td><input type="text" name="textfield3" value="{{ val.place }}"  required pattern="[A-Z a-z.]{3,25}" /></td>
+    </tr>
+    <tr>
+      <th>Post</th>
+      <td><input type="text" name="textfield4" value="{{ val.post }}" required pattern="[A-Z a-z.]{3,25}"  /></td>
+    </tr>
+    <tr>
+      <th>Pin</th>
+      <td><input type="text" name="textfield5" value="{{ val.pin }}" required pattern="[0-9]{6}" /></td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td> <label>
+        <input name="radiobutton" type="radio" value="male"  {% if val.gender == 'male' %} checked {% endif %}/>male
+		 <input name="radiobutton" type="radio" value="female" {% if val.gender == 'female' %} checked {% endif %} />female
+      </label></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><input type="email" name="textfield7" value="{{ val.email }}" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" /></td>
+    </tr>
+    <tr>
+      <th>Dob</th>
+      <td><input type="date" name="textfield82" value="{{ date }}" required   /></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><input type="text" name="textfield8"  value="{{ val.phno }}" required pattern="[6789][0-9]{9}"/></td>
+    </tr>
+    <tr>
+      <th>Photo</th>
+      <td><input type="file" name="file"  />
+      <img src="{{ val.photo.url }}" width="100dp" height="100dp"/></td>
+    </tr>
+{#    <tr>#}
+{#      <td>username</td>#}
+{#      <td><input type="text" name="textfield10" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>password</td>#}
+{#      <td><input type="text" name="textfield11" /></td>#}
+{#    </tr>#}
+    <tr>
+      <td colspan="2">
+        <div align="center" >
+          <input type="submit" name="Submit" value="edit" class="btn btn-primary" />
+          </div>
+      </td>
+    </tr>
+  </table>
+  <label></label>
+</form>
+</body>
+
+{% endblock %}
+
+{#</html>#}

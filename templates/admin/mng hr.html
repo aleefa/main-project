@@ -1,0 +1,124 @@
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style>
+  #image-container {
+    position: absolute;
+    display: none;
+  }
+</style>
+
+
+    <script>
+        function showImage(elemId, imgSrc) {
+
+  console.log("Mouse is over text");
+  console.log("\tElemId:" + elemId + " Image Source:" + imgSrc);
+  const elem = document.getElementById(elemId);
+
+   while (elem.childElementCount > 0) {
+    elem.removeChild(elem.lastChild);
+  }
+
+  const popImage = new Image();
+  popImage.src = imgSrc;
+  popImage.style.width=100;
+  popImage.style.height=100;
+{#  popImage.style.position = "absolute";#}
+  popImage.style.zIndex = "1";
+  elem.appendChild(popImage);
+}
+function hideImage(elemId) {
+  console.log("Mouse is off text");
+  console.log("\tElemId:" + elemId);
+  const elem = document.getElementById(elemId);
+  while (elem.childElementCount > 0) {
+    elem.removeChild(elem.lastChild);
+  }
+}
+
+function tellToHover() {
+  alert("Hover over the button for the image to appear, no need to press it!");
+}
+    </script>
+
+
+{#<script type="text/javascript">#}
+{#  const imageContainer = document.getElementById('image-container');#}
+{#  function showImage(event) {#}
+{#    const mouseX = event.clientX;#}
+{#    const mouseY = event.clientY;#}
+{##}
+{#    imageContainer.style.display = 'block';#}
+{#    imageContainer.style.left = mouseX + 'px';#}
+{#    imageContainer.style.top = mouseY + 'px';#}
+{#  }#}
+{#  function hideImage() {#}
+{#    imageContainer.style.display = 'none';#}
+{#  }#}
+{#</script>#}
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/search_hr#about">
+{#    <h1 align="center"><b>MANAGE HR</b></h1>#}
+  <table class="table table-striped">
+  <tr align="center">
+       <td  colspan="9"><h1>MANAGE HR</h1></td>
+   </tr>
+    <tr>
+      <th colspan="9">Name
+        <label>
+        <input type="text" name="textfield" />
+        <input type="submit" name="Submit" value="Search" class="btn btn-primary btn-lg"/>
+            <a href="/addhr#about" class="btn btn-primary btn-lg">add</a>
+      </label></th>
+    </tr>
+
+    <tr>
+      <th width="14">slno</th>
+      <th width="23">Name</th>
+      <th width="23">Address</th>
+      <th width="23">Gender</th>
+      <th width="23">Email</th>
+      <th width="23">Phone</th>
+      <th width="23">Edit&nbsp;</th>
+              <th width="23">Disable&nbsp;</th>
+        <th width="43"></th>
+    </tr>
+      {% for i in  val %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+        <td>
+
+            <div id="{{ i.id }}"
+        onmouseover="showImage('{{ i.id }}','{{ i.photo.url }}')"
+        onmouseleave="hideImage('{{ i.id }}')"> {{ i.fname }} {{ i.lname }}</div>
+{#            &nbsp;<a href="media/{{ i.photo }}" onmouseover="showImage(event)" onmouseout="hideImage()"> {{ i.fname }} {{ i.lname }}</a>#}
+{#            <div id="image-container">#}
+{#  <img src="media/{{ i.photo }}" alt="Hovered Image">#}
+{#            </div>#}
+      <br>
+{#      <img src="media/{{ i.photo }}" width="100dp" height="100dp"/></td>#}
+      <td>{{ i.place }} {{ i.post}} {{ i.pin }}</td>
+      <td>{{ i.gender}} </td>
+      <td>&nbsp;{{ i.email}} </td>
+      <td>&nbsp;{{ i.phno }} </td>
+      <td><p><a href="/edithr/{{ i.id }}#about " CLASS="BTN btn-primary p-3" ><i class="bi bi-pencil-square"></i></a></p>
+          <td>{% if i.LOGIN.type == "hr" %}<p><a href="/dlthr/{{ i.LOGIN.id }}" class="btn btn-danger p-3"> <i class="bi bi-ban icon-red"></i></a></p>{% else %} {{ i.LOGIN.type }} {% endif %}</td>
+    <td></td>
+    </tr>
+      {% endfor %}
+    <tr>
+      <td colspan="9">
+        <div align="center">
+
+          </div>
+     </td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
